@@ -18,19 +18,13 @@ interface ModalAddFoodProps {
   handleAddFood: (data: Food) => Promise<void>;
 }
 
-
-export default function ModalAddFood(props : ModalAddFoodProps) {
-  
-  const { isOpen, setIsOpen } = props;  
+export default function ModalAddFood({isOpen, setIsOpen, handleAddFood}: ModalAddFoodProps) {
 
   const handleSubmit = async (data: Food) => {
-    const { setIsOpen, handleAddFood } = props;
-
     handleAddFood(data);
     setIsOpen();
   };
 
-  
     return (
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
         <Form onSubmit={handleSubmit}>
