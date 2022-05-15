@@ -7,9 +7,8 @@ interface ModalProps {
   children: ReactElement;
 }
 
-export default function Modal(props : ModalProps){
+export default function Modal({children, setIsOpen, isOpen} : ModalProps){
 
-  const { children, setIsOpen, isOpen } = props;
   const [ modalStatus, setModalStatus ] = useState(false);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export default function Modal(props : ModalProps){
       <ReactModal
         shouldCloseOnOverlayClick={!false}
         onRequestClose={setIsOpen}
-        isOpen={modalStatus} 
+        isOpen={modalStatus}
         ariaHideApp={false}
         style={{
           content: {
