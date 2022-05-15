@@ -14,17 +14,15 @@ interface FoodProp {
 
 interface FoodProps {
   food: FoodProp,
-  handleDelete: (id : number) => Promise<void>,
-  handleEditFood: (food : FoodProp) => void;
+  handleDelete: (id: number) => Promise<void>,
+  handleEditFood: (food: FoodProp) => void;
 }
 
-export default function Food( props : FoodProps ){
-  
-  const [ available, setAvailable ] = useState(props.food.available);
-  const { food, handleDelete, handleEditFood } = props;
-  
+export default function Food({food, handleDelete, handleEditFood}: FoodProps){
+
+  const [ available, setAvailable ] = useState(food.available);
+
   const toggleAvailable = async () => {
-    const { food } = props;
 
     await api.put(`/foods/${food.id}`, {
       ...food,
